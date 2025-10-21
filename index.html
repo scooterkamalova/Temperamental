@@ -5,77 +5,117 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Temperamental Playlist</title>
   <style>
-    body {
-      background-color: white;
-      font-family: 'Helvetica Neue', sans-serif;
-      color: #4a4a4a;
-      text-align: center;
+    /* Page background: black with a full-screen artwork overlay (bottom-anchored) */
+    html, body {
+      height: 100%;
       margin: 0;
       padding: 0;
     }
+    body {
+      background-color: #000000; /* solid black background */
+      font-family: 'Helvetica Neue', sans-serif;
+      color: #ffffff; /* default text color changed for contrast */
+      text-align: center;
+    }
+
+    /* Bottom-anchored artwork that fills the lower part of the screen */
+    .bg-artwork {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      /* fill the lower portion of the viewport */
+      height: 45vh;            /* adjust this value to control how much of the lower screen is filled */
+      min-height: 200px;      /* ensure a minimum visible area on small screens */
+      max-height: 70vh;       /* limit coverage on very tall screens */
+      background-image: url('untitled_artwork.jpg');
+      background-size: cover;        /* make the artwork cover the element */
+      background-position: center bottom; /* align image to bottom center */
+      background-repeat: no-repeat;
+      z-index: -1;                   /* behind the page content */
+      pointer-events: none;          /* allow clicks through the artwork */
+    }
+
+    /* Title: Courier New, white, thin (not bold) */
     h1 {
       font-family: 'Courier New', monospace;
-      color: #ff66b2;
+      color: #ffffff;
+      font-weight: 300; /* make the title thin, not bold */
       margin-top: 30px;
+      letter-spacing: 0.5px;
     }
+
     .player {
       margin: 20px auto;
       width: 80%;
       max-width: 600px;
-      background-color: #fff0f6;
+      background-color: rgba(255,255,255,0.06); /* subtle translucent background so players are readable over the art */
       padding: 15px;
       border-radius: 10px;
+      box-shadow: none;
     }
+
     iframe {
       width: 100%;
       height: 166px;
       border: none;
     }
+
+    /* Add bottom padding so page content doesn't sit flush against the artwork */
+    .content-wrap {
+      padding-bottom: 5vh;
+      /* larger padding on small screens to avoid overlap */
+    }
   </style>
 </head>
 <body>
-  <h1>Temperamental Playlist</h1>
+  <!-- Bottom artwork element -->
+  <div class="bg-artwork" aria-hidden="true"></div>
 
-  <div class="player">
-    <iframe scrolling="no" frameborder="no" allow="autoplay" 
-      src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/smerz-sc/you-got-time-and-i-got-money&color=%23ff99cc">
-    </iframe>
-  </div>
+  <div class="content-wrap">
+    <h1>Temperamental Playlist</h1>
 
-  <div class="player">
-    <iframe scrolling="no" frameborder="no" allow="autoplay" 
-      src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/oneohtrix-point-never/nobody-here&color=%23ff99cc">
-    </iframe>
-  </div>
+    <div class="player">
+      <iframe scrolling="no" frameborder="no" allow="autoplay"
+        src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/smerz-sc/you-got-time-and-i-got-money&color=%23ff99cc">
+      </iframe>
+    </div>
 
-  <div class="player">
-    <iframe scrolling="no" frameborder="no" allow="autoplay" 
-      src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/user6280875/jones-stephenson-the-first&color=%23ff99cc">
-    </iframe>
-  </div>
+    <div class="player">
+      <iframe scrolling="no" frameborder="no" allow="autoplay"
+        src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/oneohtrix-point-never/nobody-here&color=%23ff99cc">
+      </iframe>
+    </div>
 
-  <div class="player">
-    <iframe scrolling="no" frameborder="no" allow="autoplay" 
-      src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/van-she/sex-city-the-teenagers-remix&color=%23ff99cc">
-    </iframe>
-  </div>
+    <div class="player">
+      <iframe scrolling="no" frameborder="no" allow="autoplay"
+        src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/user6280875/jones-stephenson-the-first&color=%23ff99cc">
+      </iframe>
+    </div>
 
-  <div class="player">
-    <iframe scrolling="no" frameborder="no" allow="autoplay" 
-      src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/syzygyyy/phaze-remix&color=%23ff99cc">
-    </iframe>
-  </div>
+    <div class="player">
+      <iframe scrolling="no" frameborder="no" allow="autoplay"
+        src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/van-she/sex-city-the-teenagers-remix&color=%23ff99cc">
+      </iframe>
+    </div>
 
-  <div class="player">
-    <iframe scrolling="no" frameborder="no" allow="autoplay" 
-      src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/muti/taso-future-funk&color=%23ff99cc">
-    </iframe>
-  </div>
+    <div class="player">
+      <iframe scrolling="no" frameborder="no" allow="autoplay"
+        src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/syzygyyy/phaze-remix&color=%23ff99cc">
+      </iframe>
+    </div>
 
-  <div class="player">
-    <iframe scrolling="no" frameborder="no" allow="autoplay" 
-      src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/muti/taso-finish-move&color=%23ff99cc">
-    </iframe>
+    <div class="player">
+      <iframe scrolling="no" frameborder="no" allow="autoplay"
+        src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/muti/taso-future-funk&color=%23ff99cc">
+      </iframe>
+    </div>
+
+    <div class="player">
+      <iframe scrolling="no" frameborder="no" allow="autoplay"
+        src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/muti/taso-finish-move&color=%23ff99cc">
+      </iframe>
+    </div>
   </div>
 
 </body>
